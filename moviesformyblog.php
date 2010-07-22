@@ -1,4 +1,3 @@
-
 <?php
 /* 
 Plugin Name: MoviesForMyBlog
@@ -831,6 +830,4 @@ function string_limit_words($string, $word_limit)
   array_pop($words);
   return implode(' ', $words) . '...';
 }
-
-
 ?>

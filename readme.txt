@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: moviesformyblog, netflix, movies, entertainment, videos
 Requires at least: 2.9.2
 Tested up to: 3.0
-Stable tag: 1.0
+Stable tag: 1.1
 
 Displays the most recent instant play movies and/or DVD's and Blu-Ray's shipped out on the netflix account.
 
@@ -47,6 +47,10 @@ Netflix API's utilize [OAuth](http://oauth.net/ "OAuth") so I built an intermedi
 
 
 == Changelog ==
+
+= 1.1 =
+* Fixed the headers already sent error.
+* Changed the default css to match the default theme in version 3.0.
 
 = 1.0 =
 * Added the functionality to be able to view both Instant Play and DVD on the blog.
