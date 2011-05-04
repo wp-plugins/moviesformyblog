@@ -1,0 +1,118 @@
+/* 
+    Document   : mfmbstyles
+    Created on : Jul 8, 2010, 11:43:58 PM
+    Author     : jdeathri
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+.mfmbcustomlist
+{
+    content: none;
+}
+#mfmbslider ul{
+    
+
+}
+#mfmbslider ul li{
+        
+        width: 210px;
+        height:190px;
+        overflow:hidden;
+        
+}
+.mfmb_movie_display
+{
+    width: 190px;
+}
+#mfmb_table td
+{
+    vertical-align: top;
+} 
+#sidebar ul ul
+{
+    margin: 5px 0px 0px 0px;
+}
+
+#sidebar ul ul li:before
+{
+    content: none;
+}
+#deliveredby
+{
+    text-align: center;
+
+}
+.viewtitle
+{
+  text-align: center;
+  font-size: 10px;
+
+}
+
+#mfmb_movie_display_title
+{
+    text-align: center;
+    font-weight: bold;
+    height: 22px;
+    vertical-align: top;
+    font-size: 11px;
+}
+/* applys to the settings page for mfmb */
+.mfmb_tblcolright
+{
+    text-align: right;
+}
+.mfmbtable
+{
+    border-style:solid;
+    border-color: Silver;
+    border-width: 1px;
+}
+.mfmbtabletitle
+{
+     text-align: center;
+     font-weight: bold;
+     font-size: 14px;
+     vertical-align: top;
+}
+.mfmbsettingtitle
+{
+     font-weight: bold;
+     vertical-align: top;
+}
+/* applys to the settings page for mfmb */
+
+#prevBtn, #nextBtn{
+	display: inline;
+	position: relative;
+}
+#nextBtn{
+	left:70px;
+}
+#prevBtn{
+    right: -20px;
+}
+
+/*Style the star rating display*/
+#mfmb_ratingdiv
+{
+    Width: 80px;
+    Height: 16px;
+    Background: url('star.gif') repeat-x;
+    background-position: 0px 0px;
+}
+#mfmb_ratingdiv1
+{
+    Background: url('star.gif') repeat-x;
+    Height: 16px;
+}
+#titlesynopsis
+{
+    padding-left: 3px;
+    padding-top: 3px;
+}
