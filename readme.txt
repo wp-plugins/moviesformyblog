@@ -3,8 +3,8 @@ Contributors: Jason Deatherage
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U6XN67BLCPNZE
 Tags: moviesformyblog, netflix, movies, entertainment, videos
 Requires at least: 2.9.2
-Tested up to: 3.0
-Stable tag: 1.1
+Tested up to: 3.1.2
+Stable tag: 1.2
 
 Displays the most recent instant play movies and/or DVD's and Blu-Ray's shipped out on the netflix account.
 
@@ -48,6 +48,9 @@ Netflix API's utilize [OAuth](http://oauth.net/ "OAuth") so I built an intermedi
 
 == Changelog ==
 
+= 1.2 =
+* updated the webservices urls to point to a new location because hosting providers changed.
+
 = 1.1 =
 * Fixed the headers already sent error.
 * Changed the default css to match the default theme in version 3.0.
@@ -61,4 +64,4 @@ Netflix API's utilize [OAuth](http://oauth.net/ "OAuth") so I built an intermedi
 
 
 == Upgrade Notice ==
-
+* 1.2 is required because the old urls no longer work.

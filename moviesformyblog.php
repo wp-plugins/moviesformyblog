@@ -314,7 +314,7 @@ class MoviesForMyBlog extends WP_Widget {
          
                    /*if ( $jason )
                        echo '<p>' . $jason . '</p>';
-                       $request = 'http://moviesformyblog.com/3/netflixv1/service.asmx/RequestMovieGenres';
+                       $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestMovieGenres';
                        $response = file_get_contents($request);
                        echo $response;*/
 
@@ -431,7 +431,7 @@ function mfmb_settings() {
     if (isset($_GET["mfmbrun"]) && $_GET["mfmbrun"] == 'logintokens') {
 
         //queries mfmb web service to get the login tokens
-        $request = 'http://moviesformyblog.com/3/netflixv1/service.asmx/RequestLoginToken?AppKey=' . $mfmb_rt_consumerkey;
+        $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestLoginToken?AppKey=' . $mfmb_rt_consumerkey;
 
         $ch = curl_init();
         // set URL and other appropriate options
@@ -463,7 +463,7 @@ function mfmb_settings() {
     if ((isset($_GET["mfmbrun"]) && $_GET["mfmbrun"] == 'accesstokens') &&
             ($_POST[ $hidden_field_name ] != 'Y' )) {
             //queries the mfmb web service to get access tokens
-            $request = 'http://moviesformyblog.com/3/netflixv1/service.asmx/RequestAccessToken?AppKey=' . $mfmb_rt_consumerkey . '&webTokens=' . $mfmb_lt_oauth_token . '=' . $mfmb_lt_oauth_token_secret;
+            $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestAccessToken?AppKey=' . $mfmb_rt_consumerkey . '&webTokens=' . $mfmb_lt_oauth_token . '=' . $mfmb_lt_oauth_token_secret;
             
             $ch = curl_init();
             // set URL and other appropriate options
@@ -691,7 +691,7 @@ function mfmb_filters() {
 function mfmb_RefreshInstantPlayData() 
 {
     //queries mfmb web service to get the last instant play movies
-   $request = 'http://moviesformyblog.com/3/netflixv1/service.asmx/RequestLastMoviesWatched?AppKey=' . get_option('mfmb_rt_consumerkey') .
+   $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestLastMoviesWatched?AppKey=' . get_option('mfmb_rt_consumerkey') .
     '&webClientTokens=' . get_option('mfmb_access_oauth_token') . '=' . get_option('mfmb_access_user_id') . '=' .
     get_option('mfmb_access_oauth_token_secret') . '&intInstantQty=' . get_option('mfmb_instant_quantity');
    
@@ -729,7 +729,7 @@ function mfmb_RefreshInstantPlayRatings()
      }
 
     //queries mfmb web service to get the last instant play movies ratings
-    $request = 'http://moviesformyblog.com/3/netflixv1/service.asmx/RequestMovieRatings?AppKey=' . get_option('mfmb_rt_consumerkey') .
+    $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestMovieRatings?AppKey=' . get_option('mfmb_rt_consumerkey') .
     '&webClientTokens=' . get_option('mfmb_access_oauth_token') . '=' . get_option('mfmb_access_user_id') . '=' .
     get_option('mfmb_access_oauth_token_secret') . '&MovieTitles=' . $mfmb_InstantMovieURL;
 
@@ -755,7 +755,7 @@ function mfmb_RefreshDVDMovieData()
 {
   
      //queries mfmb web service to get the last DVD/Blu-Ray movies rented
-   $request = 'http://moviesformyblog.com/3/netflixv1/service.asmx/RequestLastDiscsRented?AppKey=' . get_option('mfmb_rt_consumerkey') .
+   $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestLastDiscsRented?AppKey=' . get_option('mfmb_rt_consumerkey') .
     '&webClientTokens=' . get_option('mfmb_access_oauth_token') . '=' . get_option('mfmb_access_user_id') . '=' .
     get_option('mfmb_access_oauth_token_secret') . '&intDiscsQty=' . get_option('mfmb_dvd_quantity');
 
@@ -794,7 +794,7 @@ function mfmb_RefreshDVDMovieRatings()
 
 
       //queries mfmb web service to get the movie ratings for DVD/Blu-Ray
-     $request = 'http://moviesformyblog.com/3/netflixv1/service.asmx/RequestMovieRatings?AppKey=' . get_option('mfmb_rt_consumerkey') .
+     $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestMovieRatings?AppKey=' . get_option('mfmb_rt_consumerkey') .
      '&webClientTokens=' . get_option('mfmb_access_oauth_token') . '=' . get_option('mfmb_access_user_id') . '=' .
      get_option('mfmb_access_oauth_token_secret') . '&MovieTitles=' . $mfmb_DVDMovieURL;
 
