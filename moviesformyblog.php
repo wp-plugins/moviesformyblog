@@ -1,13 +1,13 @@
 <?php
-/* 
+/*
 Plugin Name: MoviesForMyBlog
 Plugin URI: http://moviesformyblog.com
 Description: Displays the most recent instant play movies and/or DVD's and Blu-Ray's shipped out on the netflix account
 and ratings.
 
-Version: 1.0
+Version: 1.2
 Author: Jason Deatherage
-Author URI: http://racheljason.com/blogs
+Author URI: http://racheljason.com
 License: GPL2
 
 Copyright YEAR  PLUGIN_AUTHOR_NAME  (email : PLUGIN AUTHOR EMAIL)
@@ -56,7 +56,7 @@ class MoviesForMyBlog extends WP_Widget {
                 </label>
             </p>
 
-           
+
         <?php
 
 
@@ -66,14 +66,14 @@ class MoviesForMyBlog extends WP_Widget {
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
 	$instance['title'] = strip_tags($new_instance['title']);
-        
+
         return $instance;
         // processes widget options to be saved
     }
 
     function widget($args, $instance) {
         extract( $args );
-        $title = apply_filters('widget_title', $instance['title']); 
+        $title = apply_filters('widget_title', $instance['title']);
 
                /* Before widget (defined by themes). */
                echo $before_widget;
@@ -81,7 +81,7 @@ class MoviesForMyBlog extends WP_Widget {
                    if ( $title )
                        echo $before_title . $title . $after_title; ?>
 
-            
+
 
     <script type="text/javascript">
         jQuery(document).ready(function() {
@@ -95,7 +95,7 @@ class MoviesForMyBlog extends WP_Widget {
         });
     </script>
 
-    
+
 
     <?php //if (get_option('mfmb_instant_data') == true || get_option('mfmb_dvd_data') == true )
         //This section needs to be update for some additional logic once filtering is put in.
@@ -150,20 +150,20 @@ class MoviesForMyBlog extends WP_Widget {
                         if (get_option('mfmb_dvd_check') == 'TRUE')
                         {
                             mfmb_RefreshDVDMovieData();
-                            mfmb_RefreshDVDMovieRatings();    
+                            mfmb_RefreshDVDMovieRatings();
                         }
                         else
                         {
                             update_option('mfmb_dvd_data','');
                             update_option('mfmb_dvd_data_ratings','');
                         }
-                        
+
                   }
                   if ($mfmb_query_type == 'instant')
                   {
-                     
-                          
-                      
+
+
+
                       $mfmb_query_data_name = 'mfmb_instant_data';
                       $mfmb_query_ratings_name = 'mfmb_instant_data_ratings';
                   }
@@ -203,14 +203,14 @@ class MoviesForMyBlog extends WP_Widget {
                      $mfmb_Synopsis_entries = $mfmb_xpath->query($mfmb_querySynopsis);
 
                      $mfmb_Ratings_entries = $mfmb_ratings_xpath->query($mfmb_queryRatings);
-    
+
                      $i = 0;
                      $mfmb_rating = 0;
                      $mfmb_rating_pos = 0;
                   ?>
                     <div id="mfmbslider">
                         <ul>
-                            
+
                         <?php while ($i < $mfmb_total) { ?>
                             <li>
                                 <table id="mfmb_table" class="mfmb_movie_display">
@@ -221,10 +221,10 @@ class MoviesForMyBlog extends WP_Widget {
                                             <?php
                                                  //checks if the films has been rated
                                                  if ($mfmb_Ratings_entries->item($i)->childNodes->item(1)->nodeName == 'user_rating')
-                                                 { 
+                                                 {
                                                      if ($mfmb_Ratings_entries->item($i)->childNodes->item(1)->nodeValue == '')
                                                      {
-                                                         
+
                                                          $mfmb_rating = 0;
                                                          $mfmb_newrating = $mfmb_rating / 5 * 80;
                                                          $mfmb_rating_pos = 0;
@@ -233,14 +233,14 @@ class MoviesForMyBlog extends WP_Widget {
                                                <?php }
                                                      else
                                                      {
-                                                         
+
                                                          $mfmb_rating = (int)$mfmb_Ratings_entries->item($i)->childNodes->item(1)->nodeValue;
                                                          $mfmb_newrating = $mfmb_rating / 5 * 80;
                                                          $mfmb_rating_pos = -32;
                                                          ?>
                                                             <div><b>I rated this:</b></div>
                                               <?php   } ?>
-                                           
+
                                             <?php
                                                      //echo $mfmb_newrating;
                                                  }
@@ -252,9 +252,9 @@ class MoviesForMyBlog extends WP_Widget {
                                                      ?>
                                                      <div><b>Predicted Rating:</b></div>
                                               <?php   }
-                                                
-                                                
-                                               
+
+
+
                                                 ?>
                                             <div id="mfmb_ratingdiv"  title="<?php echo $mfmb_rating; ?> out of 5 stars">
                                                 <div id="mfmb_ratingdiv1" style="width:<?php echo $mfmb_newrating?>px; background-position: 0px <?php echo $mfmb_rating_pos; ?>px; ">
@@ -268,7 +268,7 @@ class MoviesForMyBlog extends WP_Widget {
                                     </tr>
                                 </table>
                             </li>
-                        <?php 
+                        <?php
                              $i++;
                              } ?>
                         </ul>
@@ -306,12 +306,12 @@ class MoviesForMyBlog extends WP_Widget {
       </table>
 
      <?php }
-      
-            
+
+
          ?>
 
                        <?php
-         
+
                    /*if ( $jason )
                        echo '<p>' . $jason . '</p>';
                        $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestMovieGenres';
@@ -340,9 +340,9 @@ function MoviesForMyBlog_plugin_menu() {
     add_options_page('MoviesForMyBlog Settings', 'MFMB Settings','manage_options', 'mfmb_handle', 'mfmb_settings' );
     // Add a submenu to the custom top-level menu:
     //add_submenu_page('mfmb_handle','MFMB Filters','MFMB Filters', 'manage_options', 'mfmb_sub', 'mfmb_filters');
-    
-    
-    
+
+
+
 }
 //This is the function that displays all of the main settings for MoviesForMyBlog
 function mfmb_settings() {
@@ -381,7 +381,7 @@ function mfmb_settings() {
   $mfmb_access_oauth_token_secret = '';
 
   $mfmb_access_oauth_token_name = 'mfmb_access_oauth_token';
-  $mfmb_access_user_id_name = 'mfmb_access_user_id';  
+  $mfmb_access_user_id_name = 'mfmb_access_user_id';
   $mfmb_access_oauth_token_secret_name = 'mfmb_access_oauth_token_secret';
  //************Oauth Tokens*******************************
 
@@ -406,7 +406,7 @@ function mfmb_settings() {
 
 
   $hidden_field_name = 'mt_submit_hidden';
-    
+
 
     // Read in existing option value from database
     $opt_val = get_option( $opt_name );
@@ -464,14 +464,14 @@ function mfmb_settings() {
             ($_POST[ $hidden_field_name ] != 'Y' )) {
             //queries the mfmb web service to get access tokens
             $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestAccessToken?AppKey=' . $mfmb_rt_consumerkey . '&webTokens=' . $mfmb_lt_oauth_token . '=' . $mfmb_lt_oauth_token_secret;
-            
+
             $ch = curl_init();
             // set URL and other appropriate options
             curl_setopt($ch, CURLOPT_URL, $request);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); // return into a variable
              // grab URL and pass it to the browser
             $response = curl_exec($ch);
-            
+
             //loads the xml response to be able to querie it
             $xml = simplexml_load_string($response);
             $mfmb_lt_strings = explode('&',$xml[0]);
@@ -514,7 +514,7 @@ function mfmb_settings() {
              {
              $mfmb_instant_check = 'FALSE';
          }
-         
+
         // Save the posted value in the database
         //update_option( $opt_name, $opt_val );
         update_option($mfmb_dvd_check_name,$mfmb_dvd_check);
@@ -570,11 +570,11 @@ function mfmb_settings() {
     echo "<h2>" . __('MoviesForMyBlog Plugin Settings', 'mfmb-settings') . "</h2>";
     // settings form
     ?>
-    
- 
 
-   
-    
+
+
+
+
 <div>
 <form name="form1" method="post" action="">
 
@@ -651,7 +651,7 @@ function mfmb_settings() {
                 </tr>
                 <tr>
                     <td><input type="text" name="<?php echo $mfmb_data_refresh_name; ?>" value="<?php echo $mfmb_data_refresh; ?>" size="4"> Hour(s)</td>
-                    
+
                 </tr>
                 <tr><td style="font-size: 9px;" colspan="2">*Maximum requests of 4/sec and 5000/day</td>
                 </tr>
@@ -688,13 +688,13 @@ function mfmb_filters() {
 }
 
 //Queries the Instant Play Data and ratings
-function mfmb_RefreshInstantPlayData() 
+function mfmb_RefreshInstantPlayData()
 {
     //queries mfmb web service to get the last instant play movies
    $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestLastMoviesWatched?AppKey=' . get_option('mfmb_rt_consumerkey') .
     '&webClientTokens=' . get_option('mfmb_access_oauth_token') . '=' . get_option('mfmb_access_user_id') . '=' .
     get_option('mfmb_access_oauth_token_secret') . '&intInstantQty=' . get_option('mfmb_instant_quantity');
-   
+
     $ch = curl_init();
     // set URL and other appropriate options
     curl_setopt($ch, CURLOPT_URL, $request);
@@ -747,13 +747,13 @@ function mfmb_RefreshInstantPlayRatings()
     $items = $dom1->getElementsByTagName('string');
 
     update_option('mfmb_instant_data_ratings',$items->item(0)->nodeValue);
-    
+
 }
 
 //Queries the DVD/Blu-Ray rentals and the ratings of the items
 function mfmb_RefreshDVDMovieData()
 {
-  
+
      //queries mfmb web service to get the last DVD/Blu-Ray movies rented
    $request = 'http://moviesformyblog.com/netflixv1/service.asmx/RequestLastDiscsRented?AppKey=' . get_option('mfmb_rt_consumerkey') .
     '&webClientTokens=' . get_option('mfmb_access_oauth_token') . '=' . get_option('mfmb_access_user_id') . '=' .
