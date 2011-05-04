@@ -1,5 +1,5 @@
 === MoviesForMyBlog ===
-Contributors: Jason Deatherage
+Contributors: jasond727
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U6XN67BLCPNZE
 Tags: moviesformyblog, netflix, movies, entertainment, videos
 Requires at least: 2.9.2
@@ -65,3 +65,6 @@ Netflix API's utilize [OAuth](http://oauth.net/ "OAuth") so I built an intermedi
 
 == Upgrade Notice ==
 * 1.2 is required because the old urls no longer work.
+
+== Screenshots ==
+* None Available
